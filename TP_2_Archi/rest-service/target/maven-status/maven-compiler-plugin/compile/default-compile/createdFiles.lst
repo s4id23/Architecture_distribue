@@ -1,0 +1,8 @@
+tp\model\Animal.class
+tp\model\Position.class
+tp\rest\MyServiceTP.class
+tp\model\ObjectFactory.class
+tp\model\Cage.class
+tp\model\Center.class
+tp\model\AnimalNotFoundException.class
+tp\model\package-info.class

@@ -1,0 +1,40 @@
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="m1GIL:rest:tp"><grammars><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="m1GIL:rest:tp" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="m1GIL:rest:tp">
+    <xs:element name="Animal" type="tns:animal"/>
+    <xs:element name="Cage" type="tns:cage"/>
+    <xs:element name="Center" type="tns:center"/>
+    <xs:element name="Position" type="tns:position"/>
+    <xs:element name="animal" type="tns:animal"/>
+    <xs:element name="cage" type="tns:cage"/>
+    <xs:element name="center" type="tns:center"/>
+    <xs:element name="position" type="tns:position"/>
+    <xs:complexType name="animal">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="cage" type="xs:string"/>
+            <xs:element minOccurs="0" name="id" type="xs:string"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+            <xs:element minOccurs="0" name="species" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="center">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="cages" nillable="true" type="tns:cage"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+            <xs:element minOccurs="0" name="position" type="tns:position"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="cage">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="capacity" type="xs:int"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+            <xs:element minOccurs="0" name="position" type="tns:position"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="residents" nillable="true" type="tns:animal"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="position">
+        <xs:sequence>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="longitude" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+</grammars><resources base="/"><resource path="/zoo-manager/"><resource path="animals"><method name="DELETE"><response status="204"></response></method><method name="PUT"><request><representation mediaType="*/*"/></request><response status="204"></response></method></resource><resource path="animals/"><method name="GET"><response><representation mediaType="application/xml" element="prefix1:center"/></response></method><method name="POST"><request><representation mediaType="application/xml" element="prefix1:animal"/><representation mediaType="application/json"/></request><response><representation mediaType="*/*"/></response></method></resource><resource path="animals/at/{emplacement}"><param name="emplacement" style="template" type="xs:string"/><method name="DELETE"><request></request><response status="204"></response></method></resource><resource path="animals/{animal_id}"><param name="animal_id" style="template" type="xs:string"/><method name="DELETE"><request></request><response status="204"></response></method></resource><resource path="animals/{id}"><param name="id" style="template" type="xs:string"/><method name="POST"><request><representation mediaType="application/xml" element="prefix1:animal"/><representation mediaType="application/json"/></request><response><representation mediaType="*/*"/></response></method><method name="PUT"><request><representation mediaType="*/*"/></request><response status="204"></response></method></resource><resource path="animals/{id}/"><param name="id" style="template" type="xs:string"/><method name="GET"><request></request><response><representation mediaType="application/xml" element="prefix1:animal"/></response></method></resource><resource path="find/at/{position}"><param name="position" style="template" type="xs:string"/><method name="GET"><request></request><response><representation mediaType="application/xml" element="prefix1:animal"/></response></method></resource><resource path="find/byName/{name}/"><param name="name" style="template" type="xs:string"/><method name="GET"><request></request><response><representation mediaType="application/xml" element="prefix1:animal"/></response></method></resource><resource path="find/near/{position}"><param name="position" style="template" type="xs:string"/><method name="GET"><request></request><response><representation mediaType="application/xml" element="prefix1:cage"/></response></method></resource></resource></resources></application>

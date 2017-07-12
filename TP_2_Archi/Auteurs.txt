@@ -1,0 +1,6 @@
+Projet realisé par:
+BENAOUICHA Mohand-Said
+BABAGHAYOU Khaled Islam
+
+adresse publique du service déployé en PaaS:
+rest-service-unpictured-perionychium.eu-gb.mybluemix.net

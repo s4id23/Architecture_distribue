@@ -1,0 +1,2 @@
+adresse publique du service déployé en PaaS:
+rest-service-unpictured-perionychium.eu-gb.mybluemix.net
